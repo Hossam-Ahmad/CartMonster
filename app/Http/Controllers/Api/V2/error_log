@@ -1,0 +1,4 @@
+[15-Aug-2022 19:18:23 America/New_York] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Api\V2\Controller" not found in /home/ragipmullamusa/public_html/app/Http/Controllers/Api/V2/BannerController.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/ragipmullamusa/public_html/app/Http/Controllers/Api/V2/BannerController.php on line 7

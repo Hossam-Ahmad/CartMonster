@@ -1,0 +1,5 @@
+User-agent: *
+Allow: *
+
+Sitemap: https://isyol.com/sitemaps.xml
+Sitemap: https://isyol.com/sitemap-products.xml
