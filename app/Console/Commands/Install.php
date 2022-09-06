@@ -64,7 +64,6 @@ class Install extends Command
 
         $this->comment('Refreshing Database...');
         Artisan::call("migrate");
-        Artisan::call("db:seed");
         $this->info('Database Refreshed!');
 
         $this->comment('Preparing Laravel/Passport...');
