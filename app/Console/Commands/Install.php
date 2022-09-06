@@ -56,6 +56,12 @@ class Install extends Command
         Artisan::call("key:generate");
         $this->info('Keys Generated!');
 
+        $this->comment('Clearing Config...');
+        Artisan::call("config:cache");
+        Artisan::call("config:clear");
+        Artisan::call("cache:clear");
+        $this->info('Config Cleared!');
+
         $this->comment('Refreshing Database...');
         Artisan::call("migrate:fresh --seed");
         $this->info('Database Refreshed!');
