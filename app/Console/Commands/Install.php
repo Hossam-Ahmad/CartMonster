@@ -12,7 +12,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'cart:install';
+    protected $signature = 'cart:install {clientName}';
 
     /**
      * The console command description.
@@ -38,6 +38,20 @@ class Install extends Command
      */
     public function handle()
     {
+        $path = base_path('.env');
+        $clientName = $this->argument('clientName');
+        if (file_exists($path)) {
+            file_put_contents($path, str_replace(
+                'DB_DATABASE='.$this->laravel['config']['db.database'], 'DB_DATABASE=saas_'.$clientName, file_get_contents($path)
+            ));
+            file_put_contents($path, str_replace(
+                'DB_USERNAME='.$this->laravel['config']['db.host'], 'DB_USERNAME=saas_saas', file_get_contents($path)
+            ));
+            file_put_contents($path, str_replace(
+                'DB_PASSWORD='.$this->laravel['config']['db.host'], 'DB_PASSWORD=A1234(5)_?', file_get_contents($path)
+            ));
+        }
+
         $this->comment('Generating Keys...');
         Artisan::call("key:generate");
         $this->info('Keys Generated!');
