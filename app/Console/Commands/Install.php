@@ -38,6 +38,7 @@ class Install extends Command
      */
     public function handle()
     {
+        print_r($this->laravel['config']);
         $path = base_path('.env');
         $clientName = $this->argument('clientName');
         if (file_exists($path)) {
@@ -45,10 +46,10 @@ class Install extends Command
                 'DB_DATABASE='.$this->laravel['config']['db.database'], 'DB_DATABASE=saas_'.$clientName, file_get_contents($path)
             ));
             file_put_contents($path, str_replace(
-                'DB_USERNAME='.$this->laravel['config']['db.host'], 'DB_USERNAME=saas_saas', file_get_contents($path)
+                'DB_USERNAME='.$this->laravel['config']['db.host'], 'DB_USERNAME=saas_'.$clientName, file_get_contents($path)
             ));
             file_put_contents($path, str_replace(
-                'DB_PASSWORD='.$this->laravel['config']['db.host'], 'DB_PASSWORD=A1234(5)_?', file_get_contents($path)
+                'DB_PASSWORD='.$this->laravel['config']['db.password'], 'DB_PASSWORD=A1234(5)_?', file_get_contents($path)
             ));
         }
 
