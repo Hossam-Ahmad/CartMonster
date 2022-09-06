@@ -38,7 +38,6 @@ class Install extends Command
      */
     public function handle()
     {
-        print_r($this->laravel['config']);
         $path = base_path('.env');
         $clientName = $this->argument('clientName');
         if (file_exists($path)) {
